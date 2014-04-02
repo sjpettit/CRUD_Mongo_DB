@@ -1,0 +1,9 @@
+extends layout
+
+block content
+        each user in updateuser
+            form#changeusr(name="changeusr",method="post",action="/changeusr")
+                input#hiddenoid(type="hidden", name="hiddenoid", value= user._id.toHexString())
+                input#inputUserName(type="text", value=user.username, name="username")
+                input#inputEmail(type="text", value=user.email, name="email")
+                button#btnSubmit(type="submit") submit

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1.
+        User List
+    ul
+        each user, i in userlist
+            li
+                form#delUser(name="deluser",method="post",action="/deluser")
+                    a(href="mailto:#{user.email}")= user.username
+                    input#inputOid(type="hidden", name="boid", value= user._id.toHexString())
+                    button#btnSubmit(type="submit") Delete Field
+                form#updateuser(name="updateuser",method="post",action="/updateuser")
+                    input#inputOid(type="hidden", name="uoid", value= user._id.toHexString())
+                    button#btnSubmit(type="submit") Update User
+    a(href="http://localhost:3000/newuser") Add User
